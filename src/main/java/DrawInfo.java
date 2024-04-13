@@ -97,6 +97,7 @@ class DrawInfo {
 
             setLocationRelativeTo(null);
             this.setVisible(true);
+
         }
         public DrawFrame(CMServerStub m_serverStub){
             super("서버");
@@ -136,6 +137,7 @@ class DrawInfo {
                 Graphics_buffer.drawLine(info.getX(), info.getY(), info.getX1(), info.getY1());
             }
             g.drawImage(Img_buffer,0,0,this);
+            //이부분 때문에 flickering 발생
             //repaint();
 
         }
@@ -193,7 +195,6 @@ class DrawInfo {
                 DrawInfo di = new DrawInfo("PEN", x, y, x1, y1, 0, 0, 0, false, 3);
                 vc.add(di);
                 this.repaint();
-
             }
         }
 
@@ -241,11 +242,6 @@ class DrawInfo {
                 }
             }
         }
-        @Override
-        public void repaint() {
-            super.repaint();
-
-        }
         public void receiveDrawInfo(String str){
 
             String[] strArr = str.split("#");
@@ -253,6 +249,7 @@ class DrawInfo {
                     Integer.parseInt(strArr[5]),Integer.parseInt(strArr[6]),Integer.parseInt(strArr[7]),Boolean.parseBoolean(strArr[8]),Integer.parseInt(strArr[9]));
             vc.add(strDrawInfo);
             this.repaint();
+
 
         }
 
