@@ -118,6 +118,7 @@ class DrawInfo {
         }//
         //@Override
         public void paint(Graphics g){
+
             //더블 버퍼링을 위한 설정
             Img_buffer = createImage(getWidth(),getHeight());
             Graphics_buffer = Img_buffer.getGraphics();
@@ -125,6 +126,7 @@ class DrawInfo {
         }
         //@Override
         public void update(Graphics g){
+
             //벡터에 저장된 그림 전부 그림
             Graphics_buffer.clearRect(0, 0, 500, 500); // 백지화
             for (int i = 0; i < vc.size(); i++) {
@@ -134,7 +136,7 @@ class DrawInfo {
                 Graphics_buffer.drawLine(info.getX(), info.getY(), info.getX1(), info.getY1());
             }
             g.drawImage(Img_buffer,0,0,this);
-            repaint();
+            //repaint();
 
         }
 
@@ -208,7 +210,9 @@ class DrawInfo {
 
         @Override
         public void mouseDragged(MouseEvent e) {
+
             if(isClient) {
+
                 x1 = e.getX();
                 y1 = e.getY();
                 Color c = new Color(0, 0, 0);
@@ -237,6 +241,11 @@ class DrawInfo {
                 }
             }
         }
+        @Override
+        public void repaint() {
+            super.repaint();
+
+        }
         public void receiveDrawInfo(String str){
 
             String[] strArr = str.split("#");
@@ -246,6 +255,8 @@ class DrawInfo {
             this.repaint();
 
         }
+
+
     }
 
 }

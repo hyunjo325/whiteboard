@@ -124,7 +124,6 @@ public class CMClientApp implements MouseListener,MouseMotionListener{
     @Override
     public void mouseDragged(MouseEvent e) {
         Vector vc = drawboard.getVc();
-
         for (int i = 0; i<vc.size();i++){
             String strInput = vc.toString();
             CMDummyEvent due = new CMDummyEvent();
